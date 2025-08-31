@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Resume Analyzer - Upload File</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Add this inside <head> -->
+    <link rel="stylesheet" href="/style/style1.css">
+</head>
+<body>
+    <div class="upload-container">
+      <h2>Upload Your Resume</h2>
+      <form id="uploadForm">
+        <label class="custom-file-label" for="myFile">Choose File</label>
+        <input type="file" id="myFile" name="myFile" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.gif" required>
+        <span class="filename" id="filename"></span>
+        <button type="submit" id="uploadBtn" disabled>Upload</button>
+      </form>
+      <div class="msg" id="msg"></div>
+    </div>
+    <script>
+      const fileInput = document.getElementById('myFile');
+      const filenameSpan = document.getElementById('filename');
+      const uploadBtn = document.getElementById('uploadBtn');
+      const msgDiv = document.getElementById('msg');
+      const form = document.getElementById('uploadForm');
+      const label = document.querySelector('.custom-file-label');
+    
+      label.addEventListener('click', () => fileInput.click());
+    
+      fileInput.addEventListener('change', () => {
+        if (fileInput.files.length > 0) {
+          filenameSpan.textContent = fileInput.files[0].name;
+          uploadBtn.disabled = false;
+          msgDiv.textContent = '';
+          msgDiv.className = 'msg';
+        } else {
+          filenameSpan.textContent = '';
+          uploadBtn.disabled = true;
+        }
+    });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      msgDiv.textContent = '';
+      msgDiv.className = 'msg';
+      uploadBtn.disabled = true;
+
+      const formData = new FormData();
+      formData.append('myFile', fileInput.files[0]);
+
+      try {
+        const response = await fetch('/api/upload', {
+          method: 'POST',
+          body: formData
+        });
+        const result = await response.json();
+        if (response.ok) {
+          msgDiv.textContent = result.msg;
+          msgDiv.className = 'msg';
+          form.reset();
+          filenameSpan.textContent = '';
+        } else {
+          msgDiv.textContent = result.msg || 'Upload failed!';
+          msgDiv.className = 'msg error';
+        }
+      } catch (err) {
+        msgDiv.textContent = 'Network error!';
+        msgDiv.className = 'msg error';
+      }
+      uploadBtn.disabled = false;
+    });
+  </script>

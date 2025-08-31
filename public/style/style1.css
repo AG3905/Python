@@ -1,0 +1,192 @@
+/* --- General Body & Font Styles --- */
+body {
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f2f5;
+    margin: 0;
+    color: #333;
+}
+
+/* --- Main Container for the Uploader --- */
+.upload-container {
+    background-color: #ffffff;
+    padding: 2.5rem 3rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    width: 100%;
+    max-width: 450px;
+    border: 1px solid #e0e0e0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.upload-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #1a202c;
+}
+
+p {
+    font-size: 1rem;
+    color: #6b7280;
+    margin-bottom: 2rem;
+}
+
+/* --- Custom File Input --- */
+.file-input-wrapper {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+/* Hide the default file input */
+#fileInput {
+    display: none;
+}
+
+/* Style the custom label to look like a button */
+.file-input-label {
+    display: block;
+    padding: 1rem;
+    border: 2px dashed #d1d5db;
+    border-radius: 8px;
+    background-color: #f9fafb;
+    cursor: pointer;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.file-input-label:hover {
+    border-color: #6366f1;
+    background-color: #eef2ff;
+}
+
+#file-name-display {
+    color: #4b5563;
+    font-weight: 500;
+}
+
+/* --- Upload Button --- */
+.upload-button {
+    width: 100%;
+    padding: 0.875rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #ffffff;
+    background-color: #6366f1;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+}
+
+.upload-button:hover {
+    background-color: #4f46e5;
+    box-shadow: 0 6px 16px rgba(99, 102, 241, 0.3);
+}
+
+/* --- Status Message Styling --- */
+#statusMessage {
+    margin-top: 1.5rem;
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-weight: 500;
+    min-height: 1.5em; /* Reserve space to prevent layout shift */
+    display: none; /* Hidden by default */
+}
+
+/* This class is added by JS to make the message visible */
+#statusMessage.message {
+    display: block;
+}
+
+.message.success {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.message.error {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+.message.loading {
+    background-color: #e0e7ff;
+    color: #3730a3;
+}body {
+        background: #f4f6fb;
+        font-family: 'Segoe UI', Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .upload-container {
+        background: #fff;
+        padding: 2rem 2.5rem;
+        border-radius: 12px;
+        box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+        text-align: center;
+        width: 350px;
+      }
+      h2 {
+        margin-bottom: 1.2rem;
+        color: #333;
+      }
+      .file-input {
+        margin-bottom: 1.2rem;
+      }
+      input[type="file"] {
+        display: none;
+      }
+      .custom-file-label {
+        display: inline-block;
+        padding: 0.5rem 1.2rem;
+        background: #e3e7ef;
+        color: #333;
+        border-radius: 6px;
+        cursor: pointer;
+        margin-bottom: 1rem;
+        transition: background 0.2s;
+      }
+      .custom-file-label:hover {
+        background: #d0d6e6;
+      }
+      .filename {
+        display: block;
+        margin: 0.5rem 0 1rem 0;
+        color: #555;
+        font-size: 0.95rem;
+        word-break: break-all;
+      }
+      button {
+        background: #4f8cff;
+        color: #fff;
+        border: none;
+        padding: 0.6rem 2rem;
+        border-radius: 6px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      button:disabled {
+        background: #b3c7f7;
+        cursor: not-allowed;
+      }
+      .msg {
+        margin-top: 1.2rem;
+        font-size: 1rem;
+        color: #2e7d32;
+      }
+      .msg.error {
+        color: #c62828;
+      }
